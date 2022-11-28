@@ -1,10 +1,10 @@
-import React from 'react'
-import { useRef, useState, useEffect } from 'react'
-import './loginpage.css'
+import React, { useRef, useState, useEffect } from 'react'
 import { BsFillPersonFill } from 'react-icons/bs'
 import { HiKey, HiLockClosed } from 'react-icons/hi'
 import { NavLink } from 'react-router-dom'
-import Logo from '../assets/logo.png';
+
+import './loginpage.css'
+import Logo from '../../assets/logo.png';
 
 const LoginPage = () => {
     
