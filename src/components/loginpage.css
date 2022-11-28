@@ -1,0 +1,94 @@
+.main-container{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    background-color: #f3f3f3;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-evenly;   
+    align-items: center; 
+    background-color: #428bca;
+}
+.navbar img{
+    width: 8%;
+    margin: 1rem 0;
+}
+.navbar h1{
+    margin: 0;
+    color: white;
+    font-weight: 600;
+    font-variant-caps: small-caps;
+    font-family: serif;
+    padding: 0.5em;
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.container{
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    position: relative;
+    top: 25%;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+}
+
+.container-head{
+    text-align: center;
+    background-color: #428bca;
+    padding: 0.75em;
+    color: white;
+    font-size: 1.3em;
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.container-body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5em;
+    background-color: white;
+    border-radius: 0 0 10px 10px;
+}
+
+.input-field{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0.8em;
+    background: lightgray;
+    border-radius: 2px;
+    border: 0.5px solid darkgray;
+}
+
+.input-field svg{
+    fill: #7f7f7f;
+}
+.input-field > span{
+    padding: 0 5px;
+}
+
+input{
+    padding: 5px 10px;    
+    border: none;
+    border-left: 1.5px solid darkgray;
+}
+
+#sign-in{
+    margin-top: 1em;
+    background-color: #428bca;
+    color: white;
+    border-radius: 2px;
+    border: none;
+    padding: 0.5em 1em;
+    cursor: pointer;
+    text-decoration: none;
+}

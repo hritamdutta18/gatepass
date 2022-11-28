@@ -1,0 +1,16 @@
+.preview-col{
+    border-style: dashed;
+    border-color: #428bca;
+    padding: 0.5rem 1rem;    
+    font-size: 1rem;
+    overflow: auto;
+}
+
+#preview-table{
+    table-layout: fixed;
+    width: 100%;
+}
+
+#preview-table td{
+    font-size: 1.2rem;
+}

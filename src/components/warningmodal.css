@@ -1,0 +1,32 @@
+.modalContainer .footer {
+    flex: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modalContainer .footer button {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin: 1rem;
+    font-size: 1.05rem;
+}
+
+#yesBtn{
+    background-color: rgb(6, 154, 6);
+}
+#noBtn{
+    background-color: rgb(219, 14, 14);
+}
+
+.title > h3{
+    color: #428bca;
+    font-family: Mukta, sans-serif;
+    font-variant: small-caps;
+}

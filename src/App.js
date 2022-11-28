@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, useRoutes } from "react-router-dom"
+import './index.css'
+
+import LoginPage from "./components/LoginPage.jsx"
+import HomePage from "./components/HomePage.jsx"
+import GatepassForm from "./components/GatepassForm.jsx"
+import GatepassHistory from "./components/GatepassHistory"
+import GatepassAction from "./components/GatepassAction.jsx"
+
 
 function App() {
+
+  const AppRoute= () => {
+    
+      let routes = useRoutes([
+        { path: "/", element: <LoginPage /> },
+        { path: "/login", element: <LoginPage /> },
+        { path: "/home", element: <HomePage /> },
+        { path: "/generateForm", element: <GatepassForm /> },
+        { path: "/history", element: <GatepassHistory/> },
+        { path: "/action", element: <GatepassAction/> },
+      ]);
+      return routes;
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // /<Router>
+        <AppRoute />     
+    // </Router>
   );
 }
 

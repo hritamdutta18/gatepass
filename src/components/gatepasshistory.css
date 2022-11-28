@@ -1,0 +1,32 @@
+.right-container-gp{    
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    min-height: 30%;
+}
+
+.gatepass-container{
+    width: 90%;
+}
+
+.approved, .pending, .rejected{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.approved{
+    color: rgb(6, 154, 6);
+}
+.pending{
+    color: gray;
+}
+.rejected{
+    color: rgb(219, 14, 14);
+}
+
+.action-remark{
+    font-style: italic;
+}

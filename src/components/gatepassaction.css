@@ -1,0 +1,38 @@
+.approve-btn{
+    background-color: rgb(6, 154, 6);
+}
+.stall-btn{
+    background-color: gray;
+}
+.reject-btn{
+    background-color: rgb(219, 14, 14);
+}
+
+.action-btn-group{
+    display: flex;
+    justify-content: flex-end;
+    margin: 1rem 0;
+}
+
+.action-btn-group button{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    border-radius: 3px;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-left: 1rem;
+    font-size: 1.05rem;
+}
+
+.actionpage-remark{
+    margin: 1rem 0;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.actionpage-remark input{
+    border: 1px solid darkgray;
+}
