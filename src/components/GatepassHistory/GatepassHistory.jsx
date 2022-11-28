@@ -1,10 +1,11 @@
 import React from 'react'
-import SideBar from './SideBar';
-import SingleGatepass from './SingleGatepass'
-import './gatepasshistory.css'
 import { TiTick } from 'react-icons/ti'
 import { ImCross } from 'react-icons/im'
 import { MdPending } from 'react-icons/md'
+
+import SideBar from '../SideBar/SideBar';
+import SingleGatepass from '../SingleGatepass/SingleGatepass'
+import './gatepasshistory.css'
 
 const GatepassHistory = () => {
 
