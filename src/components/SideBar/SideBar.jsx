@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { BiHomeAlt } from 'react-icons/bi';
 import { GiTicket } from 'react-icons/gi';
 import {FaSignOutAlt} from 'react-icons/fa';
-import './sidebar.css';
-import Logo from '../assets/logo.png';
 import { NavLink } from 'react-router-dom';
 import { MdPendingActions, MdHistory } from 'react-icons/md'
 
+import './sidebar.css';
+import Logo from '../../assets/logo.png';
 
 const SideBar = () => {
 
