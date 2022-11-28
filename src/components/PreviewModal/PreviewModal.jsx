@@ -1,5 +1,5 @@
 import React from 'react'
-import Gatepass from './SingleGatepass'
+import Gatepass from '../SingleGatepass/SingleGatepass'
 import './previewmodal.css'
 
 const PreviewModal = ({ setOpenModal, type, sloc, sdept, dloc, ddept, matname, matcount, expiry, remarks }) => {
