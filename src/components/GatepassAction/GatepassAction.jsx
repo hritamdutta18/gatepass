@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import ReactRouterPrompt from "react-router-prompt";
 import { ErrorBoundary } from "react-error-boundary";
 
-import SingleGatepass from '../SingleGatepass/SingleGatepass';
-import WarningModal from '../WarningModal/WarningModal';
+import SingleGatepass from '../subComponents/SingleGatepass/SingleGatepass';
+import WarningModal from '../subComponents/WarningModal/WarningModal';
 import SideBar from '../subComponents/SideBar/SideBar'
 import './gatepassaction.css'
 
