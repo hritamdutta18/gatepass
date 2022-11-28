@@ -6,11 +6,11 @@ import { MdPreview, MdDelete } from 'react-icons/md'
 import { GrAddCircle } from 'react-icons/gr'
 import Select from 'react-select';
 
-import locationData from '../data/Data.json'
-import Sidebar from './SideBar'
-import Modal from './PreviewModal'
-import WarningModal from './WarningModal';
-import './warningmodal.css'
+import locationData from '../../data/Data.json'
+import Sidebar from '../SideBar/SideBar'
+import Modal from '../PreviewModal/PreviewModal'
+import WarningModal from '../WarningModal/WarningModal';
+import '../WarningModal/warningmodal.css'
 import './gatepassform.css'
 
 
