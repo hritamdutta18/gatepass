@@ -22,9 +22,7 @@ const SingleGatepass = ({ type, sloc, sdept, dloc, ddept, matname, matcount, exp
                     <td className='preview-col'>{type}</td>
                     <td className='preview-col'>                        
                         {sdept} 
-                        {                            
-                            type === "1" ? "Division, " : ", "
-                        }
+                        { type === "1" ? "Division, " : ", " }
                         {sloc}
                     </td>
                     <td className='preview-col'>{ddept} Division, {dloc}</td>
