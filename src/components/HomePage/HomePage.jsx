@@ -1,6 +1,6 @@
 import React from 'react';
 import './homepage.css';
-import SideBar from '../SideBar/SideBar';
+import SideBar from '../subComponents/SideBar/SideBar';
 
 const HomePage = () => {
       

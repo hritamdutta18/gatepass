@@ -3,7 +3,7 @@ import { TiTick } from 'react-icons/ti'
 import { ImCross } from 'react-icons/im'
 import { MdPending } from 'react-icons/md'
 
-import SideBar from '../SideBar/SideBar';
+import SideBar from '../subComponents/SideBar/SideBar';
 import SingleGatepass from '../SingleGatepass/SingleGatepass'
 import './gatepasshistory.css'
 

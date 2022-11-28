@@ -7,10 +7,10 @@ import { GrAddCircle } from 'react-icons/gr'
 import Select from 'react-select';
 
 import locationData from '../../data/Data.json'
-import Sidebar from '../SideBar/SideBar'
-import Modal from '../PreviewModal/PreviewModal'
-import WarningModal from '../WarningModal/WarningModal';
-import '../WarningModal/warningmodal.css'
+import Sidebar from '../subComponents/SideBar/SideBar'
+import Modal from '../subComponents/PreviewModal/PreviewModal'
+import WarningModal from '../subComponents/WarningModal/WarningModal';
+import '../subComponents/WarningModal/warningmodal.css'
 import './gatepassform.css'
 
 

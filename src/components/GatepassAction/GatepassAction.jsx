@@ -4,7 +4,7 @@ import { ErrorBoundary } from "react-error-boundary";
 
 import SingleGatepass from '../SingleGatepass/SingleGatepass';
 import WarningModal from '../WarningModal/WarningModal';
-import SideBar from '../SideBar/SideBar'
+import SideBar from '../subComponents/SideBar/SideBar'
 import './gatepassaction.css'
 
 
