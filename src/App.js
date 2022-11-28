@@ -1,11 +1,11 @@
 import { BrowserRouter as Router, useRoutes } from "react-router-dom"
 import './index.css'
 
-import LoginPage from "./components/LoginPage.jsx"
-import HomePage from "./components/HomePage.jsx"
-import GatepassForm from "./components/GatepassForm.jsx"
-import GatepassHistory from "./components/GatepassHistory"
-import GatepassAction from "./components/GatepassAction.jsx"
+import LoginPage from "./components/LoginPage/LoginPage"
+import HomePage from "./components/HomePage/HomePage"
+import GatepassForm from "./components/GatepassForm/GatepassForm"
+import GatepassHistory from "./components/GatepassHistory/GatepassHistory"
+import GatepassAction from "./components/GatepassAction/GatepassAction"
 
 
 function App() {
