@@ -14,6 +14,7 @@ function App() {
   const AppRoute= () => {
     
       let routes = useRoutes([
+        { path: "/", element: <HomePage /> },
         { path: "/home", element: <HomePage /> },
         { path: "/login", element: <LoginPage /> },
         { path: "/dashboard", element: <DashBoard /> },
