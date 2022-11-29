@@ -3,6 +3,7 @@ import './index.css'
 
 import LoginPage from "./components/LoginPage/LoginPage"
 import HomePage from "./components/HomePage/HomePage"
+import DashBoard from "./components/DashBoard/DashBoard"
 import GatepassForm from "./components/GatepassForm/GatepassForm"
 import GatepassHistory from "./components/GatepassHistory/GatepassHistory"
 import GatepassAction from "./components/GatepassAction/GatepassAction"
@@ -13,9 +14,9 @@ function App() {
   const AppRoute= () => {
     
       let routes = useRoutes([
-        { path: "/", element: <LoginPage /> },
-        { path: "/login", element: <LoginPage /> },
         { path: "/home", element: <HomePage /> },
+        { path: "/login", element: <LoginPage /> },
+        { path: "/dashboard", element: <DashBoard /> },
         { path: "/generateForm", element: <GatepassForm /> },
         { path: "/history", element: <GatepassHistory/> },
         { path: "/action", element: <GatepassAction/> },
