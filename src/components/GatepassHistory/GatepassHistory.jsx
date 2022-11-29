@@ -2,6 +2,7 @@ import React from 'react'
 import { TiTick } from 'react-icons/ti'
 import { ImCross } from 'react-icons/im'
 import { MdPending } from 'react-icons/md'
+import { useLocation } from "react-router-dom";
 
 import SideBar from '../subComponents/SideBar/SideBar';
 import SingleGatepass from '../subComponents/SingleGatepass/SingleGatepass'
@@ -9,10 +10,12 @@ import './gatepasshistory.css'
 
 const GatepassHistory = () => {
 
+  const { employee } = useLocation().state;
+
   return (
     <div className= 'dashboard'>
       
-      <SideBar />
+      <SideBar employee= { employee } />
 
       <div className= 'right-container'>
         <h1>Gatepass History</h1>

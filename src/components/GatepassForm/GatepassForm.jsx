@@ -5,6 +5,7 @@ import { BsFillBookmarkFill } from 'react-icons/bs'
 import { MdPreview, MdDelete } from 'react-icons/md'
 import { GrAddCircle } from 'react-icons/gr'
 import Select from 'react-select';
+import { useLocation } from "react-router-dom";
 
 import locationData from '../../data/Data.json'
 import Sidebar from '../subComponents/SideBar/SideBar'
@@ -26,6 +27,8 @@ function ErrorFallback({ error, resetErrorBoundary }) {
 
 const GatepassForm = () => {
 
+    const { employee } = useLocation().state;
+
     const[modalOpen, setModalOpen] = useState(false);
     const[change, setChange]= useState(false);
     
@@ -45,11 +48,11 @@ const GatepassForm = () => {
     const[remarks, setRemarks]= useState('');
 
 
-    const typeOptions= [
-        { "id": "1", "type": "TSL to TSL" },
+    const TSLOptions= [ { "id": "1", "type": "TSL to TSL" } ];
+    const vendorOptions= [
         { "id": "2", "type": "Vendor to TSL" },
         { "id": "3", "type": "Temporary (for 7 days)" }
-    ]
+    ];
 
     const handleType = e => {
         setType(e);
@@ -151,7 +154,7 @@ const GatepassForm = () => {
         <ErrorBoundary FallbackComponent={ErrorFallback}>
 
             <div className='dashboard'>            
-                <Sidebar  />
+                <Sidebar employee={ employee }/>
 
                 <div className='right-container'>
                     <h1>New Gatepass</h1>
@@ -165,7 +168,7 @@ const GatepassForm = () => {
                                     <Select 
                                         placeholder="--Select Type--"
                                         value={type}
-                                        options={typeOptions}
+                                        options={ employee ? TSLOptions : vendorOptions}
                                         onChange={ handleType }
                                         getOptionLabel={x => x.type}
                                         getOptionValue={x => x.id}

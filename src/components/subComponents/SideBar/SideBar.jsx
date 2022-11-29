@@ -8,7 +8,7 @@ import { MdPendingActions, MdHistory } from 'react-icons/md'
 import './sidebar.css';
 import Logo from '../../../assets/logo.png';
 
-const SideBar = () => {
+const SideBar = ( { employee } ) => {
 
     const [selected, setSelected] = useState(0);
 
@@ -23,7 +23,8 @@ const SideBar = () => {
                     <NavLink
                         className={selected === 1 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(1) }
-                        to= "/home"
+                        to= "/dashboard"
+                        state={{ employee: employee }}
                     >
                         <BiHomeAlt />
                         <span>Dashboard</span>
@@ -32,6 +33,7 @@ const SideBar = () => {
                         className={selected === 2 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(2)}
                         to= "/generateForm"
+                        state={{ employee: employee }}
                     >
                         <GiTicket />
                         <span>New Gatepass</span>
@@ -40,6 +42,7 @@ const SideBar = () => {
                         className={selected === 3 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(3)}
                         to= "/action"
+                        state={{ employee: employee }}
                     >
                         <MdPendingActions />
                         <span>Gatepass Action</span>
@@ -48,6 +51,7 @@ const SideBar = () => {
                         className={selected === 4 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(4)}
                         to= "/history"
+                        state={{ employee: employee }}
                     >
                         <MdHistory />
                         <span>Gatepass History</span>
@@ -55,7 +59,7 @@ const SideBar = () => {
                 </div>
             </div>
             
-            <NavLink className="menuItem sign-out" to="/login">
+            <NavLink className="menuItem sign-out" to="/login" state={{ employee: employee }}>
                 <FaSignOutAlt /><span>Sign Out</span>
             </NavLink>
         </div>        

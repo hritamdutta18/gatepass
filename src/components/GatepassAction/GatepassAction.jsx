@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ReactRouterPrompt from "react-router-prompt";
 import { ErrorBoundary } from "react-error-boundary";
+import { useLocation } from "react-router-dom";
 
 import SingleGatepass from '../subComponents/SingleGatepass/SingleGatepass';
 import WarningModal from '../subComponents/WarningModal/WarningModal';
@@ -19,6 +20,8 @@ function ErrorFallback({ error, resetErrorBoundary }) {
 }
 
 const GatepassAction = () => {
+    
+    const { employee } = useLocation().state;
 
     const [display, setDisplay]= useState(true);
     const [change1, setChange1]= useState(false);
@@ -32,7 +35,7 @@ const GatepassAction = () => {
     return (
         <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <div className= 'dashboard'>
-                    <SideBar />
+                    <SideBar employee= { employee } />
 
                     <div className= 'right-container'>
                         <h1>Gatepass Action</h1>

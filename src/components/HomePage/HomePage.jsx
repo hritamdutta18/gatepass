@@ -1,49 +1,29 @@
-import React from 'react';
-import './homepage.css';
-import SideBar from '../subComponents/SideBar/SideBar';
+import React from 'react'
+
+import Logo from '../../assets/logo.png'
+import HomeOption from '../subComponents/HomeOption/HomeOption'
+import './homepage.css'
+import '../LoginPage/loginpage.css'
 
 const HomePage = () => {
-      
-    const rows = [
-        { id: 1, location: 'Jharia', freq: 10 },
-        { id: 2, location: 'Bokaro', freq: 8 },
-        { id: 3, location: 'Kalinga Nagar', freq: 7 },
-        { id: 4, location: 'Gamharia', freq: 3 },
-        { id: 5, location: 'Durgapur', freq: 1 }
-    ];
 
     return (
-        <div className='dashboard'>
-            <SideBar />
-            <div className='right-container'>
-                <h1>Dashboard</h1>
-                <hr/>&nbsp;
+        <div className='main-container'>
+            <div className='navbar'>
+                <img src= { Logo } alt="logo" />
+                <h1>Smart Material GatePass System</h1>
+            </div>
+            
+            <div className='cards'>                    
+                <div className='card-container'>
+                    <HomeOption employee={true}/>
+                </div>
 
-                <table>
-                    <caption>Frequently Shipped Locations</caption>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Location</th>
-                            <th>Frequency</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            rows.map((row, index) => {
-                                return(    
-                                    <tr key={index}>               
-                                        <td>{row.id}</td>
-                                        <td>{row.location}</td>
-                                        <td>{row.freq}</td>
-                                    </tr>             
-                                );
-                            })
-                        }
-                    </tbody>
-                </table>
-            </div>            
-        </div>        
+                <div className='card-container'>
+                    <HomeOption employee={false}/>
+                </div>
+            </div>
+        </div>
     )
 }
 
