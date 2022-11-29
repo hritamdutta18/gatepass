@@ -59,7 +59,7 @@ const LoginPage = () => {
                     </div>
                     
                     <NavLink id= 'sign-in' to= "/dashboard" state={{ employee: employee }}>Sign In</NavLink>  
-                    <NavLink id= 'back-home' to= "/home">Go to Home Page</NavLink>  
+                    <NavLink id= 'back-home' to= "/">Go to Home Page</NavLink>  
                 </div>
             </div>
         </div>
