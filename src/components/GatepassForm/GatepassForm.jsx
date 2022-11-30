@@ -176,156 +176,149 @@ const GatepassForm = () => {
                                 </div>
                             </div>
 
-                            {
-                                type ?
-                                <>
-                                    <div className='form-row'>
-                                        <div className='form-input'>
-                                            <label  className="form-label">Source Location</label> 
-                                            <Select 
-                                                placeholder="--Select Source Location--"
-                                                value={srclocation}
-                                                options={locationData}
-                                                onChange={handlesrcLocation}
-                                                getOptionLabel={x => x.loc_name}
-                                                getOptionValue={x => x.loc_id}
-                                            />
-                                        </div>
-                                        
-                                        {
-                                            type.id === "1" ?
-                                            <div className='form-input'>
-                                                <label  className="form-label">Source Department</label>
-                                                <Select
-                                                    placeholder="--Select Source Department--"
-                                                    value={srcdept}
-                                                    options={srcdeptList}
-                                                    onChange={ e => { setsrcDept(e); setChange(true);} }
-                                                    getOptionLabel={x => x.dept_name}
-                                                    getOptionValue={x => x.dept_id}
-                                                />  
-                                            </div>
-                                            :
-                                            <div className='form-input'>
-                                                <label  className="form-label">Vendor Name</label>
-                                                <input
-                                                    className='non-react-select'
-                                                    style={{ width: "100%" }}
-                                                    type="text" 
-                                                    name='vendor-name' 
-                                                    placeholder="Enter Vendor Name"
-                                                    value= {srcdept ? srcdept.dept_name : ""}
-                                                    onChange= { e => { setsrcDept({"dept_name" : e.target.value}); setChange(true);} }
-                                                />  
-                                            </div>
-                                        }                                
+                                
+                            <div className='form-row'>
+                                <div className='form-input'>
+                                    <label  className="form-label">Source Location</label> 
+                                    <Select 
+                                        placeholder="--Select Source Location--"
+                                        value={srclocation}
+                                        options={locationData.filter((item) => item !== destlocation)}
+                                        onChange={handlesrcLocation}
+                                        getOptionLabel={x => x.loc_name}
+                                        getOptionValue={x => x.loc_id}
+                                        isOptionDisabled= {option => option === destlocation}    
+                                    />
+                                </div>
+                                
+                                {
+                                    employee ?
+                                    <div className='form-input'>
+                                        <label  className="form-label">Source Department</label>
+                                        <Select
+                                            placeholder="--Select Source Department--"
+                                            value={srcdept}
+                                            options={srcdeptList}
+                                            onChange={ e => { setsrcDept(e); setChange(true);} }
+                                            getOptionLabel={x => x.dept_name}
+                                            getOptionValue={x => x.dept_id}
+                                        />  
                                     </div>
-
-                                    <div className='form-row'>
-                                        <div className='form-input'>
-                                            <label  className="form-label">Destination Location</label> 
-                                            <Select 
-                                                placeholder="--Select Destination Location--"
-                                                value={destlocation}
-                                                options={locationData}
-                                                onChange={ handledestLocation }
-                                                getOptionLabel={x => x.loc_name}
-                                                getOptionValue={x => x.loc_id}
-                                                isOptionDisabled= {option => option === srclocation}
-                                                
-                                            />
-                                        </div>
-
-                                        <div className='form-input'>
-                                            <label  className="form-label">Destination Department</label>
-                                            <Select
-                                                placeholder="--Select Destination Department--"
-                                                value={destdept}
-                                                options={destdeptList}
-                                                onChange={ e => { setdestDept(e); setChange(true);} }
-                                                getOptionLabel={x => x.dept_name}
-                                                getOptionValue={x => x.dept_id}
-                                            />  
-                                        </div>
+                                    :
+                                    <div className='form-input'>
+                                        <label  className="form-label">Vendor Name</label>
+                                        <input
+                                            className='non-react-select'
+                                            style={{ width: "100%" }}
+                                            type="text" 
+                                            name='vendor-name' 
+                                            placeholder="Enter Vendor Name"
+                                            value= {srcdept ? srcdept.dept_name : ""}
+                                            onChange= { e => { setsrcDept({"dept_name" : e.target.value}); setChange(true);} }
+                                        />  
                                     </div>
+                                }                                
+                            </div>
 
-                                    <div className='form-row'>
-                                        <div className='form-input'>
-                                            <label  className="form-label">Material Required</label><br/>
-                                            {
-                                                type.id === "1" ?
-                                                <Select 
-                                                    placeholder="--Select Material--"
-                                                    value={material}
-                                                    options={matOptions}
-                                                    onChange={ e => { setMaterial(e); setChange(true);} }
-                                                    getOptionLabel={x => x.mat_name}
-                                                    getOptionValue={x => x.id}
-                                                />
-                                                :
-                                                <input 
-                                                    className='non-react-select'
-                                                    style={{ width: "100%" }}
-                                                    type="text" 
-                                                    name='material' 
-                                                    value= {material.mat_name}
-                                                    onChange={ e => { setMaterial({"mat_name" : e.target.value}); setChange(true);} }
-                                                />
-                                            } 
+                            <div className='form-row'>
+                                <div className='form-input'>
+                                    <label  className="form-label">Destination Location</label> 
+                                    <Select 
+                                        placeholder="--Select Destination Location--"
+                                        value={destlocation}
+                                        options={locationData.filter((item) => item !== srclocation)}
+                                        onChange={ handledestLocation }
+                                        getOptionLabel={x => x.loc_name}
+                                        getOptionValue={x => x.loc_id}                                        
+                                    />
+                                </div>
 
-                                            <button className='material-btn-group add-btn' ><GrAddCircle />&nbsp;Add Material</button>
-                                            {/* <button className='delete-btn' ><MdDelete /></button> */}
-                                        </div>
+                                <div className='form-input'>
+                                    <label  className="form-label">Destination Department</label>
+                                    <Select
+                                        placeholder="--Select Destination Department--"
+                                        value={destdept}
+                                        options={destdeptList}
+                                        onChange={ e => { setdestDept(e); setChange(true);} }
+                                        getOptionLabel={x => x.dept_name}
+                                        getOptionValue={x => x.dept_id}
+                                    />  
+                                </div>
+                            </div>
 
-                                        <div className='form-input'>
-                                            <label  className="form-label">Material Count</label> <br/>
-                                            <input 
-                                                className='non-react-select'
-                                                type="number" 
-                                                name= "material count" 
-                                                min="1" 
-                                                value= {matCount}
-                                                onChange= { e => { setmatCount(e.target.value); setChange(true); }}                            
-                                            />
-                                        </div>
-                                    </div>
-
-
+                            <div className='form-row'>
+                                <div className='form-input'>
+                                    <label  className="form-label">Material Required</label><br/>
                                     {
-                                        type.id === "2" || type.id === "3" ?
-                                        <div className='form-row'>                            
-                                            <div className='form-input'>
-                                                <label  className="form-label">Expiry Date</label><br/>
-                                                <input 
-                                                    className='non-react-select'
-                                                    type="date" 
-                                                    id="expiry" 
-                                                    name="expiry date" 
-                                                    value={date}
-                                                    onChange={ e => { setDate (e.target.value); setChange(true);} }
-                                                    onClick= { () => dateFunction(type.id) } />
-                                            </div>
-                                        </div>
+                                        employee ?
+                                        <Select 
+                                            placeholder="--Select Material--"
+                                            value={material}
+                                            options={matOptions}
+                                            onChange={ e => { setMaterial(e); setChange(true);} }
+                                            getOptionLabel={x => x.mat_name}
+                                            getOptionValue={x => x.id}
+                                        />
                                         :
-                                        <></>
-                                    }  
+                                        <input 
+                                            className='non-react-select'
+                                            style={{ width: "100%" }}
+                                            type="text" 
+                                            name='material' 
+                                            value= {material.mat_name}
+                                            onChange={ e => { setMaterial({"mat_name" : e.target.value}); setChange(true);} }
+                                        />
+                                    } 
 
-                                    <div className='form-row'>
-                                        <div className='form-input'>
-                                            <label className="form-label">Remarks</label><br/>
-                                            <textarea 
-                                                id='remarks' 
-                                                value={remarks}
-                                                onChange= {e => { setRemarks(e.target.value); setChange(true);}}
-                                            />
-                                        </div>
+                                    <button className='material-btn-group add-btn' ><GrAddCircle />&nbsp;Add Material</button>
+                                    {/* <button className='delete-btn' ><MdDelete /></button> */}
+                                </div>
+
+                                <div className='form-input'>
+                                    <label  className="form-label">Material Count</label> <br/>
+                                    <input 
+                                        className='non-react-select'
+                                        type="number" 
+                                        name= "material count" 
+                                        min="1" 
+                                        value= {matCount}
+                                        onChange= { e => { setmatCount(e.target.value); setChange(true); }}                            
+                                    />
+                                </div>
+                            </div>
+
+
+                            {
+                                !employee ?
+                                <div className='form-row'>                            
+                                    <div className='form-input'>
+                                        <label  className="form-label">Expiry Date</label><br/>
+                                        <input 
+                                            className='non-react-select'
+                                            type="date" 
+                                            id="expiry" 
+                                            name="expiry date" 
+                                            value={date}
+                                            onChange={ e => { setDate (e.target.value); setChange(true);} }
+                                            onClick= { () => dateFunction(type.id) } />
                                     </div>
-
-                                    <button id="submit" type='submit' >Submit</button>
-                                </>
+                                </div>
                                 :
                                 <></>
-                            }                            
+                            }  
+
+                            <div className='form-row'>
+                                <div className='form-input'>
+                                    <label className="form-label">Remarks</label><br/>
+                                    <textarea 
+                                        id='remarks' 
+                                        value={remarks}
+                                        onChange= {e => { setRemarks(e.target.value); setChange(true);}}
+                                    />
+                                </div>
+                            </div>
+
+                            <button id="submit" type='submit' >Submit</button>                        
                         </form>
 
                         <div className='functionality form-row'>                
