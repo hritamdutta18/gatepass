@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 85%;
+    height: 100%;
     width: 85%;
     margin: 0 auto;
 } 
@@ -14,4 +14,13 @@
     width: 25%;
     border-radius: 10px;
     box-shadow: 2px 2px 10px grey;
+}
+
+@media (max-width: 567px) {
+    .cards{
+        flex-direction: column;
+    }
+    .card-container{
+        width: 80%;
+    }
 }
