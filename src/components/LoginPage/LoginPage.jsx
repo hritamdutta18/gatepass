@@ -21,47 +21,50 @@ const LoginPage = () => {
         <div className='main-container'>
             <div className='navbar'>
                 <img src= {Logo} alt="logo" />
-                <h1>Smart Material GatePass System</h1>
+                <h1>Smart Material Gatepass System</h1>
             </div>
             
-            <div className='container'>
-                <div className='container-head'>
-                    <span style={{ writingMode: "vertical-lr" }}><HiLockClosed/></span> &nbsp;
-                    <span>{employee ? "Employee" : "Vendor"}&nbsp;Log In</span>
-                </div>
-
-                <div className='container-body'>
-                    <div className='input-field'>
-                        <span><BsFillPersonFill/></span>
-
-                        <input
-                            type="text"
-                            id="personal-num"
-                            ref={userRef}
-                            autoComplete="off"
-                            onChange={(e) => setUser(e.target.value)}
-                            value={user}
-                            placeholder= { employee ? "Personal No." : "Username" }
-                            required
-                        />
+            <div className='cards'>
+                <div className='container'>
+                    <div className='container-head'>
+                        <span style={{ writingMode: "vertical-lr" }}><HiLockClosed/></span> &nbsp;
+                        <span>{employee ? "Employee" : "Vendor"}&nbsp;Log In</span>
                     </div>
-                    
-                    <div className='input-field'>
-                        <span><HiKey/></span>
-                        <input
-                            type="password"
-                            id="password"
-                            onChange={(e) => setPwd(e.target.value)}
-                            value={pwd}
-                            placeholder= { employee ? "ADID Password" : "Password" }
-                            required
-                        />
+
+                    <div className='container-body'>
+                        <div className='input-field'>
+                            <span><BsFillPersonFill/></span>
+
+                            <input
+                                type="text"
+                                id="personal-num"
+                                ref={userRef}
+                                autoComplete="off"
+                                onChange={(e) => setUser(e.target.value)}
+                                value={user}
+                                placeholder= { employee ? "Personal No." : "Username" }
+                                required
+                            />
+                        </div>
+                        
+                        <div className='input-field'>
+                            <span><HiKey/></span>
+                            <input
+                                type="password"
+                                id="password"
+                                onChange={(e) => setPwd(e.target.value)}
+                                value={pwd}
+                                placeholder= { employee ? "ADID Password" : "Password" }
+                                required
+                            />
+                        </div>
+                        
+                        <NavLink id= 'sign-in' to= "/dashboard" state={{ employee: employee }}>Sign In</NavLink>  
+                        <NavLink id= 'back-home' to= "/">Go to Home Page</NavLink>  
                     </div>
-                    
-                    <NavLink id= 'sign-in' to= "/dashboard" state={{ employee: employee }}>Sign In</NavLink>  
-                    <NavLink id= 'back-home' to= "/">Go to Home Page</NavLink>  
                 </div>
             </div>
+            
         </div>
     )
 }
