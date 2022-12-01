@@ -11,7 +11,7 @@ const HomePage = () => {
         <div className='main-container'>
             <div className='navbar'>
                 <img src= { Logo } alt="logo" />
-                <h1>Smart Material GatePass System</h1>
+                <h1>Smart Material Gatepass System</h1>
             </div>
             
             <div className='cards'>                    
