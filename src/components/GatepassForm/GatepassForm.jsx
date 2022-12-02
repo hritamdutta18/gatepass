@@ -123,6 +123,8 @@ const GatepassForm = () => {
     }
 
     const handleModal= () => {
+        console.log(material)
+        console.log(matCount)
         if (type && srclocation && srcdept && destlocation && destdept && material && matCount)
             setModalOpen(true);
     }    
@@ -172,6 +174,8 @@ const GatepassForm = () => {
                                         onChange={ handleType }
                                         getOptionLabel={x => x.type}
                                         getOptionValue={x => x.id}
+                                        isClearable
+                                        required
                                     />
                                 </div>
                             </div>
@@ -187,7 +191,9 @@ const GatepassForm = () => {
                                         onChange={handlesrcLocation}
                                         getOptionLabel={x => x.loc_name}
                                         getOptionValue={x => x.loc_id}
-                                        isOptionDisabled= {option => option === destlocation}    
+                                        isOptionDisabled= {option => option === destlocation}  
+                                        isClearable
+                                        required  
                                     />
                                 </div>
                                 
@@ -202,6 +208,8 @@ const GatepassForm = () => {
                                             onChange={ e => { setsrcDept(e); setChange(true);} }
                                             getOptionLabel={x => x.dept_name}
                                             getOptionValue={x => x.dept_id}
+                                            isClearable
+                                            required
                                         />  
                                     </div>
                                     :
@@ -215,6 +223,7 @@ const GatepassForm = () => {
                                             placeholder="Enter Vendor Name"
                                             value= {srcdept ? srcdept.dept_name : ""}
                                             onChange= { e => { setsrcDept({"dept_name" : e.target.value}); setChange(true);} }
+                                            required
                                         />  
                                     </div>
                                 }                                
@@ -229,7 +238,9 @@ const GatepassForm = () => {
                                         options={locationData.filter((item) => item !== srclocation)}
                                         onChange={ handledestLocation }
                                         getOptionLabel={x => x.loc_name}
-                                        getOptionValue={x => x.loc_id}                                        
+                                        getOptionValue={x => x.loc_id}     
+                                        isClearable                   
+                                        required                
                                     />
                                 </div>
 
@@ -242,6 +253,8 @@ const GatepassForm = () => {
                                         onChange={ e => { setdestDept(e); setChange(true);} }
                                         getOptionLabel={x => x.dept_name}
                                         getOptionValue={x => x.dept_id}
+                                        isClearable
+                                        required
                                     />  
                                 </div>
                             </div>
@@ -258,6 +271,8 @@ const GatepassForm = () => {
                                             onChange={ e => { setMaterial(e); setChange(true);} }
                                             getOptionLabel={x => x.mat_name}
                                             getOptionValue={x => x.id}
+                                            isClearable
+                                            required
                                         />
                                         :
                                         <input 
@@ -267,6 +282,7 @@ const GatepassForm = () => {
                                             name='material' 
                                             value= {material.mat_name}
                                             onChange={ e => { setMaterial({"mat_name" : e.target.value}); setChange(true);} }
+                                            required
                                         />
                                     } 
 
@@ -282,7 +298,8 @@ const GatepassForm = () => {
                                         name= "material count" 
                                         min="1" 
                                         value= {matCount}
-                                        onChange= { e => { setmatCount(e.target.value); setChange(true); }}                            
+                                        onChange= { e => { setmatCount(e.target.value); setChange(true); }}   
+                                        required                         
                                     />
                                 </div>
                             </div>
@@ -300,7 +317,9 @@ const GatepassForm = () => {
                                             name="expiry date" 
                                             value={date}
                                             onChange={ e => { setDate (e.target.value); setChange(true);} }
-                                            onClick= { () => dateFunction(type.id) } />
+                                            onClick= { () => dateFunction(type.id) } 
+                                            required
+                                        />
                                     </div>
                                 </div>
                                 :
