@@ -371,7 +371,7 @@ const GatepassForm = () => {
                         && 
                         <Modal 
                             setOpenModal={setModalOpen} 
-                            type= {type.type} 
+                            type= {type.id} 
                             sloc= {srclocation.loc_name}  
                             sdept= {srcdept.dept_name}
                             dloc= {destlocation.loc_name}

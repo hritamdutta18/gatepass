@@ -7,7 +7,7 @@ import SingleGatepass from '../subComponents/SingleGatepass/SingleGatepass';
 import WarningModal from '../subComponents/WarningModal/WarningModal';
 import SideBar from '../subComponents/SideBar/SideBar'
 import './gatepassaction.css'
-
+import actionData from '../../data/actionData.json'
 
 function ErrorFallback({ error, resetErrorBoundary }) {
     return (
@@ -26,12 +26,6 @@ const GatepassAction = () => {
     const [display, setDisplay]= useState(true);
     const [change1, setChange1]= useState(false);
 
-    // const gatepasses= [
-    //     { "id": "1", },
-    //     { "id": "2", },
-    //     { "id": "3", }
-    // ]
-
     return (
         <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <div className= 'dashboard'>
@@ -42,48 +36,33 @@ const GatepassAction = () => {
                         <hr/>&nbsp;
 
                         <div className='right-container-gp'>
-                        {                                                      
-                            // gatepasses.map((gatepass) => (
-                                
-                            //         display ?
-                            //         <div className='gatepass-container' key= {gatepass.id}>                                   
-                            //             <SingleGatepass />
-
-                            //             <span className='actionpage-remark'>
-                            //                 Remarks: 
-                            //                 <input type="text" onChange={() => setChange1(true)}/>
-                            //             </span>
-                                        
-                            //             <div className='action-btn-group'>
-                            //                 <button className='approve-btn' onClick={() => setDisplay(false)}>Approve</button>
-                            //                 <button className='reject-btn' onClick={() => setDisplay(false)}>Reject</button>
-                            //                 <button className='stall-btn' onClick={() => setDisplay(false)}>Stall</button>
-                            //             </div>
-                            //         </div>
-                            //         :
-                            //         <h3> No Pending Gatepasses </h3>                          
-                            // ))
+                        {          
                             display ?  
                             <>
-                                <div className='gatepass-container'> 
-                                    <SingleGatepass />
-                                    <span className='actionpage-remark'>Remarks: <input type="text" onChange={() => setChange1(true)}/></span>
-                                    <div className='action-btn-group'>
-                                        <button className='approve-btn' onClick={() => { setDisplay(false); setChange1(false); }}>Approve</button>
-                                        <button className='reject-btn' onClick={() => { setDisplay(false); setChange1(false); }}>Reject</button>
-                                        <button className='stall-btn' onClick={() => { setDisplay(false); setChange1(false); }}>Stall</button>
-                                    </div>
-                                </div>
-
-                                <div className='gatepass-container'> 
-                                    <SingleGatepass />
-                                    <span className='actionpage-remark'>Remarks: <input type="text" /></span>
-                                    <div className='action-btn-group'>
-                                        <button className='approve-btn' onClick={() => setDisplay(false)}>Approve</button>
-                                        <button className='reject-btn' onClick={() => setDisplay(false)}>Reject</button>
-                                        <button className='stall-btn' onClick={() => setDisplay(false)}>Stall</button>
-                                    </div>
-                                </div> 
+                                {   
+                                    actionData.map (data => {
+                                        return (
+                                            <div className='gatepass-container' key={data.id}> 
+                                                <SingleGatepass 
+                                                    type= {data.type}
+                                                    sloc= {data.src_location}
+                                                    sdept= {data.src_dept}
+                                                    dloc= {data.dest_location}
+                                                    ddept= {data.dest_dept}
+                                                    matname= {data.material_name}
+                                                    matcount= {data.material_count}
+                                                    expiry= {data.expiry}
+                                                />
+                                                <span className='actionpage-remark'>Remarks: <input type="text" onChange={() => setChange1(true)}/></span>
+                                                <div className='action-btn-group'>
+                                                    <button className='approve-btn' onClick={() => { setDisplay(false); setChange1(false); }}>Approve</button>
+                                                    <button className='reject-btn' onClick={() => { setDisplay(false); setChange1(false); }}>Reject</button>
+                                                    <button className='stall-btn' onClick={() => { setDisplay(false); setChange1(false); }}>Stall</button>
+                                                </div>
+                                            </div>
+                                        )                                        
+                                    })
+                                }
                             </>
                             :
                             <h3>No Pending Gatepasses</h3>
