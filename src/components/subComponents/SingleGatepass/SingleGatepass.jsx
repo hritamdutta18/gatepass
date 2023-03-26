@@ -3,6 +3,12 @@ import './singlegatepass.css'
 
 const SingleGatepass = ({ type, sloc, sdept, dloc, ddept, matname, matcount, expiry, remarks }) => {
 
+    const options= [ 
+        { "id": "1", "type": "TSL to TSL" },
+        { "id": "2", "type": "Vendor to TSL" },
+        { "id": "3", "type": "Temporary (for 7 days)" }
+    ];
+
     return (
     <div>
         <table id= "preview-table">
@@ -19,10 +25,10 @@ const SingleGatepass = ({ type, sloc, sdept, dloc, ddept, matname, matcount, exp
 
             <tbody>                
                 <tr>
-                    <td className='preview-col'>{type}</td>
+                    <td className='preview-col'>{ options.filter(option => option.id === type).map(opt => opt.type) }</td>
                     <td className='preview-col'>                        
                         {sdept} 
-                        { type === "1" ? "Division, " : ", " }
+                        { type === "1" ? " Division, " : ", " }
                         {sloc}
                     </td>
                     <td className='preview-col'>{ddept} Division, {dloc}</td>
