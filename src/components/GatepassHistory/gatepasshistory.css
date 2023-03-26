@@ -8,8 +8,10 @@
 .gatepass-container{
     width: 90%;
 }
-
-.approved, .pending, .rejected{
+.gatepass-container:last-child{
+    margin-bottom: 1rem;
+}
+.approved, .stalled, .rejected{
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -20,13 +22,9 @@
 .approved{
     color: rgb(6, 154, 6);
 }
-.pending{
+.stalled{
     color: gray;
 }
 .rejected{
     color: rgb(219, 14, 14);
-}
-
-.action-remark{
-    font-style: italic;
 }
