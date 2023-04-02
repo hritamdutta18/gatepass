@@ -123,8 +123,6 @@ const GatepassForm = () => {
     }
 
     const handleModal= () => {
-        console.log(material)
-        console.log(matCount)
         if (type && srclocation && srcdept && destlocation && destdept && material && matCount)
             setModalOpen(true);
     }    
@@ -144,7 +142,7 @@ const GatepassForm = () => {
         setdestDept('');
 
         setMaterial('');
-        setmatCount();
+        setmatCount('');
         setDate('');
         setRemarks('');
 
@@ -286,12 +284,12 @@ const GatepassForm = () => {
                                         />
                                     } 
 
-                                    <button className='material-btn-group add-btn' ><GrAddCircle />&nbsp;Add Material</button>
+                                    {/* <button className='material-btn-group add-btn' ><GrAddCircle />&nbsp;Add Material</button> */}
                                     {/* <button className='delete-btn' ><MdDelete /></button> */}
                                 </div>
 
                                 <div className='form-input'>
-                                    <label  className="form-label">Material Count</label> <br/>
+                                    <label  className="form-label">Material Quantity</label> <br/>
                                     <input 
                                         className='non-react-select'
                                         type="number" 
@@ -335,10 +333,10 @@ const GatepassForm = () => {
                                         onChange= {e => { setRemarks(e.target.value); setChange(true);}}
                                     />
                                 </div>
-                            </div>
+                            </div>                            
 
                             <button id="submit" type='submit' >Submit</button>                        
-                        </form>
+                        </form>  
 
                         <div className='functionality form-row'>                
                             <button className='save-later'>
@@ -349,9 +347,9 @@ const GatepassForm = () => {
                                 <MdPreview /> &nbsp;
                                 Preview Gatepass
                             </button>
-                        </div>
+                        </div>                      
                     </div>
-
+                    
 
                     {/* Warning Modal for unsaved changes */}
                     <ReactRouterPrompt when= {change === true}>

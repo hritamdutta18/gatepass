@@ -14,17 +14,28 @@
     font-weight: 600;
 }  
 
-  /* logo */
-.logo {
+  /*Top Section */
+.top-section {
     text-align: center;
+    padding: 1rem;
+    align-items: center;
 }
-.logo > img {
-    width: 60%;
+.top-section img {
+    width: 80%;
+    transition: all 0.5s ease;
 }
-.logo > h3{
+.top-section > h2{
     margin: 1rem;
     font-variant: small-caps;
-    font-size: 1.3rem;
+    font-size: 1.5rem;
+}
+.logo-container{
+    display: block;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu-btn{
+    cursor: pointer;
 }
 
   /* menu */
@@ -67,3 +78,9 @@ a{
     width: 8px;
     height: 100%;
 } */
+
+@media (max-width: 450px) {
+    .sidebar {
+        width: 50%;
+    }
+}

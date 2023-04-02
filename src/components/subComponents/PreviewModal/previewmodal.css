@@ -41,3 +41,12 @@
     font-size: 25px;
     cursor: pointer;
 }
+
+@media (max-width: 767px){
+    .modalContainer{
+        width: 100%;
+    }
+    .modalBackground{
+        left: 14%;
+    }
+}

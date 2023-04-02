@@ -73,3 +73,11 @@ tr:nth-child(even) {
     background-color: #f4f6fb;
 }
 
+@media (max-width: 450px) {
+  .right-container > h1{
+    font-size: 2rem;
+  }
+  th, td {
+      padding: 1.4rem;
+  }
+}
