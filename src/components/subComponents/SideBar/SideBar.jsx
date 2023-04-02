@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { BiHomeAlt } from 'react-icons/bi';
 import { GiTicket } from 'react-icons/gi';
-import {FaSignOutAlt} from 'react-icons/fa';
+import { FaSignOutAlt, FaBars } from 'react-icons/fa';
+import { ImCross } from 'react-icons/im'
 import { NavLink } from 'react-router-dom';
 import { MdPendingActions, MdHistory } from 'react-icons/md'
 
@@ -11,14 +12,30 @@ import Logo from '../../../assets/logo.png';
 const SideBar = ( { employee } ) => {
 
     const [selected, setSelected] = useState(0);
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen (!isOpen);
+
+    const matchQuery = window.matchMedia("(max-width: 450px)").matches;
 
     return (
-        <div className='sidebar'>
+        <div style={{width: matchQuery ? (isOpen ? "50%" : "50px") : "20%"}} className='sidebar'>
             <div>
-                <div className="logo">
-                    <img src= {Logo} alt="logo" />
-                    <h3>Smart Materials Gatepass System</h3>
+                <div className="top-section">
+                    <div style={{ display: matchQuery ? "flex" : "block" }} className='logo-container'>
+                        <img style={{ display: matchQuery ? (isOpen ? "block" : "none") : "initial" }} src= {Logo} alt="logo" />
+                        <div style={{ display: matchQuery ? "block" : "none" }} className="bars">
+                        {
+                            isOpen ?
+                            <ImCross className='menu-btn' onClick= {toggle}/>
+                            :
+                            <FaBars className='menu-btn' onClick= {toggle}/>
+                        }
+                            
+                        </div>
+                    </div>                    
+                    <h2 style={{display: matchQuery ? (isOpen ? "block" : "none") : "block"}}>Smart Materials Gatepass System</h2>
                 </div>
+
                 <div className="menu">
                     <NavLink
                         className={selected === 1 ? "menuItem active" : "menuItem"}
@@ -27,8 +44,9 @@ const SideBar = ( { employee } ) => {
                         state={{ employee: employee }}
                     >
                         <BiHomeAlt />
-                        <span>Dashboard</span>
+                        <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}} >Dashboard</span>
                     </NavLink>
+
                     <NavLink
                         className={selected === 2 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(2)}
@@ -36,8 +54,9 @@ const SideBar = ( { employee } ) => {
                         state={{ employee: employee }}
                     >
                         <GiTicket />
-                        <span>New Gatepass</span>
+                        <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}}>New Gatepass</span>
                     </NavLink>
+
                     <NavLink
                         className={selected === 3 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(3)}
@@ -45,8 +64,9 @@ const SideBar = ( { employee } ) => {
                         state={{ employee: employee }}
                     >
                         <MdPendingActions />
-                        <span>Gatepass Action</span>
+                        <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}}>Gatepass Action</span>
                     </NavLink>
+                    
                     <NavLink
                         className={selected === 4 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(4)}
@@ -54,13 +74,14 @@ const SideBar = ( { employee } ) => {
                         state={{ employee: employee }}
                     >
                         <MdHistory />
-                        <span>Gatepass History</span>
+                        <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}}>Gatepass History</span>
                     </NavLink>
                 </div>
             </div>
             
             <NavLink className="menuItem sign-out" to="/login" state={{ employee: employee }}>
-                <FaSignOutAlt /><span>Sign Out</span>
+                <FaSignOutAlt />
+                <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}}>Sign Out</span>
             </NavLink>
         </div>        
     )
