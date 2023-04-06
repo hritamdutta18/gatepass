@@ -7,7 +7,7 @@ import { useLocation } from "react-router-dom";
 import SideBar from '../subComponents/SideBar/SideBar';
 import SingleGatepass from '../subComponents/SingleGatepass/SingleGatepass'
 import './gatepasshistory.css'
-import historyData from '../../data/historyData.json'
+import { employeeData, vendorData } from '../../data/historyData'
 
 const GatepassHistory = () => {
 
@@ -24,7 +24,7 @@ const GatepassHistory = () => {
 
         <div className='right-container-gp'>     
             {   
-                historyData.map (data => {
+                (employee ? employeeData : vendorData).map (data => {
                     return (
                         <div className='gatepass-container' key={data.id}> 
                             <SingleGatepass 
@@ -39,9 +39,9 @@ const GatepassHistory = () => {
                                 remarks= {data.remarks}
                             />
                             
-                            <span className= {data.action === "1" ? 'approved' : (data.action === "2" ? 'rejected' : 'stalled')}>
-                              {data.action === "1" ? <TiTick/> : (data.action === "2" ? <ImCross/> : <MdPending/>)} &nbsp;
-                              {data.action === "1" ? 'Approved' : (data.action === "2" ? 'Rejected' : 'Stalled')}
+                            <span className= {data.action === 1 ? 'approved' : (data.action === 2 ? 'rejected' : 'stalled')}>
+                              {data.action === 1 ? <TiTick/> : (data.action === 2 ? <ImCross/> : <MdPending/>)} &nbsp;
+                              {data.action === 1 ? 'Approved' : (data.action === 2 ? 'Rejected' : 'Stalled')}
                             </span>
                         </div>
                     )                                        

@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 
 import './dashboard.css';
 import SideBar from '../subComponents/SideBar/SideBar';
-import rows from '../../data/dashboardData.json'
+import { employeeData, vendorData} from '../../data/dashboardData'
 
 const HomePage = () => {
     
@@ -28,7 +28,7 @@ const HomePage = () => {
                     </thead>
                     <tbody>
                         {
-                            rows.map((row) => {
+                            (employee ? employeeData : vendorData).map((row) => {
                                 return(    
                                     <tr key={row.id}>               
                                         <td>{row.id}</td>

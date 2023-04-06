@@ -4,9 +4,9 @@ import './singlegatepass.css'
 const SingleGatepass = ({ type, sloc, sdept, dloc, ddept, matname, matcount, expiry, remarks }) => {
 
     const options= [ 
-        { "id": "1", "type": "TSL to TSL" },
-        { "id": "2", "type": "Vendor to TSL" },
-        { "id": "3", "type": "Temporary (for 7 days)" }
+        { "id": 1, "type": "TSL to TSL" },
+        { "id": 2, "type": "Vendor to TSL" },
+        { "id": 3, "type": "Temporary (for 7 days)" }
     ];
 
     const matchQuery = window.matchMedia("(max-width: 767px)").matches;
@@ -25,7 +25,7 @@ const SingleGatepass = ({ type, sloc, sdept, dloc, ddept, matname, matcount, exp
                         <th className='preview-col'>From</th>
                         <td className='preview-col'>                        
                             {sdept} 
-                            { type === "1" ? " Division, " : ", " }
+                            { type === 1 ? " Division, " : ", " }
                             {sloc}
                         </td>
                     </tr>
@@ -80,14 +80,14 @@ const SingleGatepass = ({ type, sloc, sdept, dloc, ddept, matname, matcount, exp
                         <td className='preview-col'>{ options.filter(option => option.id === type).map(opt => opt.type) }</td>
                         <td className='preview-col'>                        
                             {sdept} 
-                            { type === "1" ? " Division, " : ", " }
+                            { type === 1 ? " Division, " : ", " }
                             {sloc}
                         </td>
                         <td className='preview-col'>{ddept} Division, {dloc}</td>
                         <td className='preview-col'>{matname} - {matcount}</td>
                         {
                             expiry ? 
-                            <td className='preview-col'>expiry</td>
+                            <td className='preview-col'>{expiry}</td>
                             :
                             <></>
                         }

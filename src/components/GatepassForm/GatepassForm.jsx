@@ -7,7 +7,7 @@ import { GrAddCircle } from 'react-icons/gr'
 import Select from 'react-select';
 import { useLocation } from "react-router-dom";
 
-import locationData from '../../data/Data.json'
+import { locationdeptData, matOptions, TSLOptions, vendorOptions } from '../../data/formData'
 import Sidebar from '../subComponents/SideBar/SideBar'
 import Modal from '../subComponents/PreviewModal/PreviewModal'
 import WarningModal from '../subComponents/WarningModal/WarningModal';
@@ -48,12 +48,6 @@ const GatepassForm = () => {
     const[remarks, setRemarks]= useState('');
 
 
-    const TSLOptions= [ { "id": "1", "type": "TSL to TSL" } ];
-    const vendorOptions= [
-        { "id": "2", "type": "Vendor to TSL" },
-        { "id": "3", "type": "Temporary (for 7 days)" }
-    ];
-
     const handleType = e => {
         setType(e);
         setsrcDept(null);
@@ -79,17 +73,6 @@ const GatepassForm = () => {
 
         setChange(true);
     }
-
-    const matOptions= [
-        { "id": "1", "mat_name": "Pig Iron" },
-        { "id": "2", "mat_name": "Cast Iron" },
-        { "id": "3", "mat_name": "Stainless Steel Rolls" },
-        { "id": "4", "mat_name": "Coke" },
-        { "id": "5", "mat_name": "Furnace Materials" },
-        { "id": "6", "mat_name": "Iron Processing Machine" },
-        { "id": "7", "mat_name": "Exhaust Purifiers" },
-        { "id": "8", "mat_name": "Iron Ferrite" }
-    ]
 
     const dateFunction= (id) => {        
         var today = new Date();
@@ -185,7 +168,7 @@ const GatepassForm = () => {
                                     <Select 
                                         placeholder="--Select Source Location--"
                                         value={srclocation}
-                                        options={locationData.filter((item) => item !== destlocation)}
+                                        options={locationdeptData.filter((item) => item !== destlocation)}
                                         onChange={handlesrcLocation}
                                         getOptionLabel={x => x.loc_name}
                                         getOptionValue={x => x.loc_id}
@@ -233,7 +216,7 @@ const GatepassForm = () => {
                                     <Select 
                                         placeholder="--Select Destination Location--"
                                         value={destlocation}
-                                        options={locationData.filter((item) => item !== srclocation)}
+                                        options={locationdeptData.filter((item) => item !== srclocation)}
                                         onChange={ handledestLocation }
                                         getOptionLabel={x => x.loc_name}
                                         getOptionValue={x => x.loc_id}     

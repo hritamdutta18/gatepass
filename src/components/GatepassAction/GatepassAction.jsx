@@ -7,7 +7,7 @@ import SingleGatepass from '../subComponents/SingleGatepass/SingleGatepass';
 import WarningModal from '../subComponents/WarningModal/WarningModal';
 import SideBar from '../subComponents/SideBar/SideBar'
 import './gatepassaction.css'
-import actionData from '../../data/actionData.json'
+import { employeeData, vendorData } from '../../data/actionData'
 
 function ErrorFallback({ error, resetErrorBoundary }) {
     return (
@@ -40,7 +40,7 @@ const GatepassAction = () => {
                             display ?  
                             <>
                                 {   
-                                    actionData.map (data => {
+                                    (employee ? employeeData : vendorData).map (data => {
                                         return (
                                             <div className='gatepass-container' key={data.id}> 
                                                 <SingleGatepass 
@@ -52,6 +52,7 @@ const GatepassAction = () => {
                                                     matname= {data.material_name}
                                                     matcount= {data.material_count}
                                                     expiry= {data.expiry}
+                                                    remarks= {data.remarks}
                                                 />
                                                 <span className='actionpage-remark'>Remarks: <input type="text" onChange={() => setChange1(true)}/></span>
                                                 <div className='action-btn-group'>
