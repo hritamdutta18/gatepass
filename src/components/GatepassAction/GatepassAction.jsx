@@ -23,9 +23,32 @@ const GatepassAction = () => {
     
     const { employee } = useLocation().state;
 
-    const [display, setDisplay]= useState(true);
-    const [change1, setChange1]= useState(false);
+    const [display, setDisplay]= useState(employee ? employeeData : vendorData);    
+    const [change, setChange]= useState (new Array(display.length).fill(false));
+    const [inputdata, setInputdata]= useState(new Array(display.length).fill(""));
 
+    const removeItem = (index) => {
+        setDisplay(display.filter((o, i) => index !== i));
+        handleInput(index, "");
+        handleCheck(index);
+        // setChange(change.filter((o, i) => index !== i));
+        // setInputdata(inputdata.filter((o, i) => index !== i));
+    }
+
+    const handleCheck = (index) => 
+        setChange(prevState => 
+            prevState.map((item, idx) => 
+                idx === index ? (inputdata[idx] !== "" ? true : false) : item
+    ));
+
+    const handleInput = (index, value) => 
+        setInputdata(prevState => 
+            prevState.map((item, idx) => 
+                idx === index ? (inputdata[idx]= value) : item
+    ));
+
+            console.log(inputdata)
+            console.log(change)
     return (
         <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <div className= 'dashboard'>
@@ -37,12 +60,12 @@ const GatepassAction = () => {
 
                         <div className='right-container-gp'>
                         {          
-                            display ?  
+                            display.length !== 0 ?  
                             <>
                                 {   
-                                    (employee ? employeeData : vendorData).map (data => {
+                                    display.map ((data, id) => {
                                         return (
-                                            <div className='gatepass-container' key={data.id}> 
+                                            <div className='gatepass-container' key={id}> 
                                                 <SingleGatepass 
                                                     type= {data.type}
                                                     sloc= {data.src_location}
@@ -54,11 +77,16 @@ const GatepassAction = () => {
                                                     expiry= {data.expiry}
                                                     remarks= {data.remarks}
                                                 />
-                                                <span className='actionpage-remark'>Remarks: <input type="text" onChange={() => setChange1(true)}/></span>
+
+                                                <span className='actionpage-remark'>
+                                                    Remarks:&nbsp;
+                                                    <input type="text" value= {inputdata[id]} onChange= {e => { handleInput(id, e.target.value); handleCheck(id); }} />
+                                                </span>
+
                                                 <div className='action-btn-group'>
-                                                    <button className='approve-btn' onClick={() => { setDisplay(false); setChange1(false); }}>Approve</button>
-                                                    <button className='reject-btn' onClick={() => { setDisplay(false); setChange1(false); }}>Reject</button>
-                                                    <button className='stall-btn' onClick={() => { setDisplay(false); setChange1(false); }}>Stall</button>
+                                                    <button className='approve-btn' onClick= { () => removeItem(id)}>Approve</button>
+                                                    <button className='reject-btn' onClick= { () => removeItem(id) }>Reject</button>
+                                                    <button className='stall-btn' onClick= { () => removeItem(id) }>Stall</button>
                                                 </div>
                                             </div>
                                         )                                        
@@ -70,7 +98,7 @@ const GatepassAction = () => {
                         }    
 
                         {/* Warning Modal for unsaved changes */}
-                        <ReactRouterPrompt when= {change1 === true}>
+                        <ReactRouterPrompt when= {change.indexOf(true) > -1}>
                             {({ isActive, onConfirm, onCancel }) =>
                                 isActive && (
                                 <WarningModal 
