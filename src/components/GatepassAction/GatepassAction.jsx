@@ -47,8 +47,7 @@ const GatepassAction = () => {
                 idx === index ? (inputdata[idx]= value) : item
     ));
 
-            console.log(inputdata)
-            console.log(change)
+
     return (
         <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <div className= 'dashboard'>
