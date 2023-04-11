@@ -21,7 +21,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
 
 const GatepassAction = () => {
     
-    const { employee } = useLocation().state;
+    const { employee, admin } = useLocation().state;
 
     const [display, setDisplay]= useState(employee ? employeeData : vendorData);    
     const [change, setChange]= useState (new Array(display.length).fill(false));
@@ -51,7 +51,7 @@ const GatepassAction = () => {
     return (
         <ErrorBoundary FallbackComponent={ErrorFallback}>
                 <div className= 'dashboard'>
-                    <SideBar employee= { employee } />
+                    <SideBar employee= { employee } admin= { admin } />
 
                     <div className= 'right-container'>
                         <h1>Gatepass Action</h1>

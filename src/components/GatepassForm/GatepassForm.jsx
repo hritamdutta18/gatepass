@@ -27,7 +27,7 @@ function ErrorFallback({ error, resetErrorBoundary }) {
 
 const GatepassForm = () => {
 
-    const { employee } = useLocation().state;
+    const { employee, admin } = useLocation().state;
 
     const[modalOpen, setModalOpen] = useState(false);
     const[change, setChange]= useState(false);
@@ -108,6 +108,8 @@ const GatepassForm = () => {
     const handleModal= () => {
         if (type && srclocation && srcdept && destlocation && destdept && material && matCount)
             setModalOpen(true);
+        
+            console.log(material)
     }    
     
 
@@ -137,7 +139,7 @@ const GatepassForm = () => {
         <ErrorBoundary FallbackComponent={ErrorFallback}>
 
             <div className='dashboard'>            
-                <Sidebar employee={ employee }/>
+                <Sidebar employee={ employee } admin= { admin } />
 
                 <div className='right-container'>
                     <h1>New Gatepass</h1>

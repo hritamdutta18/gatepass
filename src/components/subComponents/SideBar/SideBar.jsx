@@ -9,7 +9,7 @@ import { MdPendingActions, MdHistory } from 'react-icons/md'
 import './sidebar.css';
 import Logo from '../../../assets/logo.png';
 
-const SideBar = ( { employee } ) => {
+const SideBar = ( { employee, admin } ) => {
 
     const [selected, setSelected] = useState(0);
     const [isOpen, setIsOpen] = useState(false);
@@ -41,37 +41,42 @@ const SideBar = ( { employee } ) => {
                         className={selected === 1 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(1) }
                         to= "/dashboard"
-                        state={{ employee: employee }}
+                        state={{ employee: employee, admin: admin }}
                     >
                         <BiHomeAlt />
                         <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}} >Dashboard</span>
-                    </NavLink>
-
-                    <NavLink
-                        className={selected === 2 ? "menuItem active" : "menuItem"}
-                        onChange={() => setSelected(2)}
-                        to= "/generateForm"
-                        state={{ employee: employee }}
-                    >
-                        <GiTicket />
-                        <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}}>New Gatepass</span>
-                    </NavLink>
-
+                    </NavLink>                    
+                    
+                    {
+                        admin ?
+                        <NavLink
+                            className={selected === 2 ? "menuItem active" : "menuItem"}
+                            onChange={() => setSelected(2)}
+                            to= "/generateForm"
+                            state={{ employee: employee, admin: admin }}
+                        >
+                            <GiTicket />
+                            <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}}>New Gatepass</span>
+                        </NavLink>                        
+                        :
+                        <></>
+                    }
+                    
                     <NavLink
                         className={selected === 3 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(3)}
                         to= "/action"
-                        state={{ employee: employee }}
+                        state={{ employee: employee, admin: admin }}
                     >
                         <MdPendingActions />
                         <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}}>Gatepass Action</span>
                     </NavLink>
-                    
+
                     <NavLink
                         className={selected === 4 ? "menuItem active" : "menuItem"}
                         onChange={() => setSelected(4)}
                         to= "/history"
-                        state={{ employee: employee }}
+                        state={{ employee: employee, admin: admin }}
                     >
                         <MdHistory />
                         <span style={{display: matchQuery ? (isOpen ? "inline" : "none") : "initial"}}>Gatepass History</span>

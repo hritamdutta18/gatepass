@@ -7,11 +7,11 @@ import { employeeData, vendorData} from '../../data/dashboardData'
 
 const HomePage = () => {
     
-    const { employee } = useLocation().state;
+    const { employee, admin } = useLocation().state;
 
     return (
         <div className='dashboard'>
-            <SideBar employee= { employee }/>
+            <SideBar employee= { employee } admin= { admin }/>
 
             <div className='right-container'>
                 <h1>Dashboard</h1>

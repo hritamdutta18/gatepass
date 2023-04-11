@@ -59,7 +59,15 @@ const LoginPage = () => {
                             />
                         </div>
                         
-                        <NavLink id= 'sign-in' to= "/dashboard" state={{ employee: employee }}>Sign In</NavLink>  
+                        <NavLink 
+                            id= 'sign-in' 
+                            to= "/dashboard" 
+                            state={{ employee: employee, 
+                                    admin: user === "admin"|| !employee ? true : false 
+                                }}
+                            >
+                                Sign In
+                        </NavLink>  
                         <NavLink id= 'back-home' to= "/">Go to Home Page</NavLink>  
                     </div>
                 </div>

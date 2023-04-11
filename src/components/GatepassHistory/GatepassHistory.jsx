@@ -11,12 +11,12 @@ import { employeeData, vendorData } from '../../data/historyData'
 
 const GatepassHistory = () => {
 
-  const { employee } = useLocation().state;
+  const { employee, admin } = useLocation().state;
 
   return (
     <div className= 'dashboard'>
       
-      <SideBar employee= { employee } />
+      <SideBar employee= { employee } admin= { admin } />
 
       <div className= 'right-container'>
         <h1>Gatepass History</h1>
