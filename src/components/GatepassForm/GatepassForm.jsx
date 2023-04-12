@@ -88,7 +88,7 @@ const GatepassForm = () => {
         today = yyyy + '-' + mm + '-' + dd;
         document.getElementById("expiry").setAttribute("min", today);
 
-        if (id === "3"){
+        if (id === 3){
             var today1 = new Date();
             today1.setDate(today1.getDate() + 7);             
             dd= today1.getDate();
